@@ -13,8 +13,11 @@ const mockUser = {
 // Function to get the current user
 export async function getCurrentUser() {
   try {
-    // In a real app, this would check session/token validity
-    // For demo purposes, we'll just return the mock user
+    // Simulação de verificação de usuário atual
+    const savedUser = localStorage.getItem("sigps-user")
+    if (savedUser) {
+      return JSON.parse(savedUser)
+    }
     return mockUser
   } catch (error) {
     console.error("Error getting current user:", error)
@@ -27,6 +30,7 @@ export async function signOut() {
   try {
     // In a real app, this would invalidate the session/token
     // For demo purposes, we'll just return true
+    localStorage.removeItem("sigps-user")
     return true
   } catch (error) {
     console.error("Error signing out:", error)

@@ -3,109 +3,178 @@
 import type React from "react"
 
 import { useState } from "react"
-import { useAuth } from "@/components/auth/auth-context"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Loader2, Lock, User } from "lucide-react"
+import { Eye, EyeOff, Shield, Building2 } from "lucide-react"
 
-export function LoginPage() {
-  const { login } = useAuth()
-  const [username, setUsername] = useState("")
+interface User {
+  id: string
+  email: string
+  name: string
+  role: "admin" | "tecnico"
+}
+
+interface LoginPageProps {
+  onLogin: (user: User) => void
+}
+
+const mockUsers = [
+  {
+    id: "1",
+    email: "admin@saude.sp.gov.br",
+    password: "123456",
+    name: "Administrador Sistema",
+    role: "admin" as const,
+  },
+  {
+    id: "2",
+    email: "joao.silva@saude.sp.gov.br",
+    password: "123456",
+    name: "João Silva",
+    role: "tecnico" as const,
+  },
+]
+
+export function LoginPage({ onLogin }: LoginPageProps) {
+  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
     setError("")
 
-    const success = await login(username, password)
+    // Simular delay de autenticação
+    await new Promise((resolve) => setTimeout(resolve, 1000))
 
-    if (!success) {
-      setError("Usuário ou senha inválidos")
+    const user = mockUsers.find((u) => u.email === email && u.password === password)
+
+    if (user) {
+      onLogin({
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        role: user.role,
+      })
+    } else {
+      setError("Email ou senha incorretos")
     }
 
     setLoading(false)
   }
 
+  const handleQuickLogin = (userEmail: string, userPassword: string) => {
+    setEmail(userEmail)
+    setPassword(userPassword)
+  }
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
-          <div className="mx-auto w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-4">
-            <Lock className="w-6 h-6 text-white" />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+      <div className="w-full max-w-md">
+        <div className="text-center mb-8">
+          <div className="mx-auto mb-4 w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center">
+            <Building2 className="w-8 h-8 text-white" />
           </div>
-          <CardTitle className="text-2xl font-bold">Sistema de Emendas</CardTitle>
-          <CardDescription>Faça login para acessar o sistema</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="username">Usuário</Label>
-              <div className="relative">
-                <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+          <h1 className="text-3xl font-bold text-gray-900">SIGPS-IA</h1>
+          <p className="text-gray-600 mt-2">Sistema Integrado de Gestão de Profissionais de Saúde</p>
+        </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Shield className="w-5 h-5" />
+              Acesso ao Sistema
+            </CardTitle>
+            <CardDescription>Entre com suas credenciais para acessar o sistema</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
                 <Input
-                  id="username"
-                  type="text"
-                  placeholder="Digite seu usuário"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className="pl-10"
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="seu.email@saude.sp.gov.br"
                   required
                 />
               </div>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Senha</Label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                <Input
-                  id="password"
-                  type="password"
-                  placeholder="Digite sua senha"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10"
-                  required
-                />
+
+              <div className="space-y-2">
+                <Label htmlFor="password">Senha</Label>
+                <div className="relative">
+                  <Input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Digite sua senha"
+                    required
+                  />
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  </Button>
+                </div>
               </div>
-            </div>
 
-            {error && (
-              <Alert variant="destructive">
-                <AlertDescription>{error}</AlertDescription>
-              </Alert>
-            )}
-
-            <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Entrando...
-                </>
-              ) : (
-                "Entrar"
+              {error && (
+                <Alert variant="destructive">
+                  <AlertDescription>{error}</AlertDescription>
+                </Alert>
               )}
-            </Button>
-          </form>
 
-          <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-            <p className="text-sm font-medium text-gray-700 mb-2">Credenciais de teste:</p>
-            <div className="text-xs text-gray-600 space-y-1">
-              <p>
-                <strong>Admin:</strong> admin / 123456
-              </p>
-              <p>
-                <strong>Técnico:</strong> tecnico1 / 123456
-              </p>
+              <Button type="submit" className="w-full" disabled={loading}>
+                {loading ? "Entrando..." : "Entrar"}
+              </Button>
+            </form>
+
+            <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+              <p className="text-sm font-medium text-gray-700 mb-3">Credenciais de teste:</p>
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <div className="text-xs text-gray-600">
+                    <strong>Admin:</strong> admin@saude.sp.gov.br / 123456
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => handleQuickLogin("admin@saude.sp.gov.br", "123456")}
+                    className="text-xs"
+                  >
+                    Usar
+                  </Button>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="text-xs text-gray-600">
+                    <strong>Técnico:</strong> joao.silva@saude.sp.gov.br / 123456
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => handleQuickLogin("joao.silva@saude.sp.gov.br", "123456")}
+                    className="text-xs"
+                  >
+                    Usar
+                  </Button>
+                </div>
+              </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   )
 }

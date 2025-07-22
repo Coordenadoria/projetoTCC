@@ -6,8 +6,8 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Sistema de Emendas Parlamentares",
-  description: "Sistema para gerenciamento de emendas parlamentares",
+  title: "SIGPS-IA - Sistema Integrado de Gestão de Profissionais de Saúde",
+  description: "Sistema com IA para gestão de profissionais de saúde da Secretaria de Saúde de São Paulo",
     generator: 'v0.dev'
 }
 
