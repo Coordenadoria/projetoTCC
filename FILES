@@ -1,0 +1,397 @@
+──────────────────────── app/layout.tsx ────────────────────────
+\`\`\`tsx
+import "@/app/globals.css"
+
+export const metadata = {
+  title: "SIGPS-IA",
+  description: "Sistema de Gestão de Projetos de Saúde – versão v0 demo",
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="pt-BR">
+      <body className="min-h-screen bg-background text-foreground antialiased">
+        {children}
+      </body>
+    </html>
+  )
+}
+\`\`\`
+
+──────────────────────── app/page.tsx ──────────────────────────
+\`\`\`tsx
+export default function HomePage() {
+  return (
+    <main className="flex h-screen items-center justify-center">
+      <h1 className="text-3xl font-bold">SIGPS-IA – Home</h1>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/loading.tsx ───────────────────────
+\`\`\`tsx
+export default function RootLoading() {
+  return (
+    <div className="flex h-screen items-center justify-center">
+      <span className="animate-pulse text-xl">Carregando…</span>
+    </div>
+  )
+}
+\`\`\`
+
+──────────────────────── Generic placeholder for every page ────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/dashboard/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/professionals/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/professionals/loading.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/professionals/new/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/professionals/edit/[id]/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/training/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/training/loading.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/analytics/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/analytics/loading.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/evaluations/performance/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/evaluations/performance/loading.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/evaluations/performance/new/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/wellness/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/wellness/new/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/setup/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/reports/performance/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/reports/wellness/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/reports/departmental/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/reports/compliance/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/reports/predictive/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
+
+──────────────────────── app/reports/executive/page.tsx ────────────────────────
+\`\`\`tsx
+"use client"
+
+export default function PlaceholderPage() {
+  const path =
+    typeof window !== "undefined" ? window.location.pathname : "esta página"
+  return (
+    <main className="flex h-screen flex-col items-center justify-center gap-2 text-center">
+      <h1 className="text-2xl font-semibold">Em construção 🚧</h1>
+      <p className="text-muted-foreground">{path}</p>
+    </main>
+  )
+}
+\`\`\`
