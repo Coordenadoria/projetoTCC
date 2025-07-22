@@ -406,7 +406,7 @@ export default function ExecutiveReportPage() {
                           <p className="text-sm text-gray-600">Taxa de Rotatividade</p>
                           <div className="flex items-center mt-2 text-sm text-orange-600">
                             <AlertTriangle className="w-4 h-4 mr-1" />
-                            Meta: <10%\
+                            {"Meta: < 10%"}
                           </div>
                         </div>
                         <TrendingDown className="w-8 h-8 text-orange-600" />
@@ -447,7 +447,9 @@ export default function ExecutiveReportPage() {
                     <CardContent className="pt-6">
                       <div className="flex items-center justify-between">
                         <div>
-                          <div className="text-xl font-bold text-gray-900">{metrics.satisfactionScore.toFixed(1)}/5</div>
+                          <div className="text-xl font-bold text-gray-900">
+                            {metrics.satisfactionScore.toFixed(1)}/5
+                          </div>
                           <p className="text-sm text-gray-600">Satisfação Geral</p>
                         </div>
                         <Award className="w-6 h-6 text-purple-600" />
@@ -725,7 +727,8 @@ export default function ExecutiveReportPage() {
                       <div className="flex items-center justify-between">
                         <div>
                           <div className="text-2xl font-bold text-gray-900">
-                            R$ {((metrics.turnoverRate / 100) * metrics.totalProfessionals * 25000 / 1000).toFixed(0)}k
+                            R$ {(((metrics.turnoverRate / 100) * metrics.totalProfessionals * 25000) / 1000).toFixed(0)}
+                            k
                           </div>
                           <p className="text-sm text-gray-600">Custo de Rotatividade</p>
                           <div className="flex items-center mt-2 text-sm text-orange-600">
@@ -783,9 +786,7 @@ export default function ExecutiveReportPage() {
                             <span className="text-sm font-medium text-green-900">Programas de Bem-estar</span>
                             <span className="text-lg font-bold text-green-600">+320%</span>
                           </div>
-                          <p className="text-xs text-green-800 mt-1">
-                            Redução de 25% no absenteísmo
-                          </p>
+                          <p className="text-xs text-green-800 mt-1">Redução de 25% no absenteísmo</p>
                         </div>
 
                         <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
@@ -793,9 +794,7 @@ export default function ExecutiveReportPage() {
                             <span className="text-sm font-medium text-blue-900">Treinamentos</span>
                             <span className="text-lg font-bold text-blue-600">+180%</span>
                           </div>
-                          <p className="text-xs text-blue-800 mt-1">
-                            Aumento de 15% na produtividade
-                          </p>
+                          <p className="text-xs text-blue-800 mt-1">Aumento de 15% na produtividade</p>
                         </div>
 
                         <div className="p-3 bg-purple-50 border border-purple-200 rounded-lg">
@@ -803,9 +802,7 @@ export default function ExecutiveReportPage() {
                             <span className="text-sm font-medium text-purple-900">Retenção de Talentos</span>
                             <span className="text-lg font-bold text-purple-600">+250%</span>
                           </div>
-                          <p className="text-xs text-purple-800 mt-1">
-                            Economia de R$ 2.1M em recrutamento
-                          </p>
+                          <p className="text-xs text-purple-800 mt-1">Economia de R$ 2.1M em recrutamento</p>
                         </div>
                       </div>
                     </CardContent>
